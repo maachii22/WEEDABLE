@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import Marquee from '@/components/Marquee'
 import Problema from '@/components/Problema'
 import Portales from '@/components/Portales'
 import Clientes from '@/components/Clientes'
@@ -16,6 +17,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <Marquee />
         <Problema />
         <Portales />
         <Clientes />

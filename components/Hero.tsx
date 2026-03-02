@@ -49,7 +49,7 @@ export default function Hero() {
           <span
             className="block"
             style={{
-              WebkitTextStroke: '2px rgba(255,255,255,0.25)',
+              WebkitTextStroke: '2px rgba(255,255,255,0.2)',
               WebkitTextFillColor: 'transparent',
               color: 'transparent',
             }}

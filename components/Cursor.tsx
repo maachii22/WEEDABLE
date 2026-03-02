@@ -20,8 +20,8 @@ export default function Cursor() {
     }
 
     const animate = () => {
-      rx += (mx - rx) * 0.13
-      ry += (my - ry) * 0.13
+      rx += (mx - rx) * 0.12
+      ry += (my - ry) * 0.12
       if (ringRef.current) {
         ringRef.current.style.left = rx + 'px'
         ringRef.current.style.top = ry + 'px'

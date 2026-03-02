@@ -20,7 +20,7 @@ export default function Precios() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} id="precios" className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="precios" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

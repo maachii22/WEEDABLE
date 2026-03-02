@@ -3,6 +3,9 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
+// Reemplazar con el número real de WhatsApp (ej: 54911XXXXXXXX sin + ni espacios)
+const WHATSAPP_NUMBER = '549XXXXXXXXXX'
+
 export default function CTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -14,12 +17,12 @@ export default function CTA() {
     const msg = encodeURIComponent(
       `Hola! Soy *${form.nombre}*${form.club ? ` del club *${form.club}*` : ''} y quiero conocer más sobre Weedable. Mi WhatsApp: ${form.whatsapp}`
     )
-    window.open(`https://wa.me/549XXXXXXXXXX?text=${msg}`, '_blank')
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank')
     setSent(true)
   }
 
   return (
-    <section ref={ref} id="contacto" className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="contacto" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
 
       {/* Green glow background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -98,7 +101,7 @@ export default function CTA() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="rounded-3xl border border-[#00a701]/30 bg-[#00a701]/[0.05] p-12 text-center"
+            className="rounded-3xl border border-[#00a701]/30 bg-[#00a701]/5 p-12 text-center"
           >
             <div className="text-4xl mb-4">🌿</div>
             <p className="font-nunito font-black text-2xl text-white mb-2">¡Listo!</p>

@@ -26,7 +26,7 @@ export default function Footer() {
               <Image src="/logo.png" alt="weedable" width={100} height={24} className="h-5 w-auto object-contain" />
             </div>
             <p className="text-white/35 text-sm leading-relaxed">
-              Software a medida exclusivo para clubes cannábicos. Tu nombre, tu marca, tu operación — todo en uno.
+              Software exclusivo para clubes cannábicos. Tu nombre, tu marca, tu operación.
             </p>
           </div>
 

@@ -35,7 +35,7 @@ export default function Proceso() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} id="proceso" className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="proceso" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -78,7 +78,7 @@ export default function Proceso() {
             >
               {/* Big number background */}
               <div
-                className="absolute -top-4 -right-2 font-nunito font-black text-[100px] leading-none text-white/[0.04] select-none pointer-events-none transition-colors duration-300 group-hover:text-[#00a701]/[0.07]"
+                className="absolute -top-4 -right-2 font-nunito font-black text-[100px] leading-none text-white/[0.04] select-none pointer-events-none transition-colors duration-300 group-hover:text-[#00a701]/10"
               >
                 {paso.num}
               </div>

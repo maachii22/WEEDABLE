@@ -26,7 +26,7 @@ export default function Problema() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="funciones" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
 
       {/* Subtle top border */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-white/10" />

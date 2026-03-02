@@ -48,7 +48,7 @@ export default function Portales() {
   const current = portales[active]
 
   return (
-    <section ref={ref} id="portales" className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="portales" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
 
       {/* Section header — centered like Vantra */}
       <div className="max-w-6xl mx-auto">
@@ -179,8 +179,10 @@ export default function Portales() {
                       alt={current.nombre}
                       width={900}
                       height={500}
-                      className="w-full object-cover object-top"
-                      style={{ filter: 'blur(3px)', transform: 'scale(1.02)' }}
+                      className="w-full object-cover object-top blur-[2px] md:blur-[3px] scale-[1.02]"
+                      priority
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQACEQADAP/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAQUA/9k="
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]/80" />

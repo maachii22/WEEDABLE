@@ -41,7 +41,7 @@ export default function Clientes() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} id="clientes" className="relative py-32 px-6 overflow-hidden">
+    <section ref={ref} id="clientes" className="relative py-32 px-6 overflow-hidden border-t border-white/[0.05]">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
@@ -65,6 +65,7 @@ export default function Clientes() {
               style={{
                 WebkitTextStroke: '2px rgba(255,255,255,0.2)',
                 WebkitTextFillColor: 'transparent',
+                color: 'transparent',
               }}
             >
               En producción.
