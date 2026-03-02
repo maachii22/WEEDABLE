@@ -1,5 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import Problema from '@/components/Problema'
+import Portales from '@/components/Portales'
 import Cursor from '@/components/Cursor'
 
 export default function Home() {
@@ -9,7 +11,9 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        {/* Próximas secciones se agregarán acá */}
+        <Problema />
+        <Portales />
+        {/* Próximas secciones: Clientes, Precios, Proceso, CTA, Footer */}
       </main>
     </>
   )
