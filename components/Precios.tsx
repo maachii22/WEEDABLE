@@ -7,7 +7,7 @@ const incluye = [
   'Portal de Socios con identidad de tu club',
   'Dashboard Admin 360°',
   'Sistema de puntos y tienda integrada',
-  'Stock en tiempo real',
+  'Stock de genéticas en tiempo real',
   'Reseñas de genéticas',
   'Aviso de paso para socios',
   'Cotización del dólar live',
@@ -36,7 +36,7 @@ export default function Precios() {
             <span className="w-6 h-px bg-[#00a701]" />
           </div>
           <h2
-            className="font-nunito font-black leading-[0.93] tracking-tight text-white"
+            className="font-display leading-[0.9] tracking-tight text-white"
             style={{ fontSize: 'clamp(48px, 7vw, 100px)' }}
           >
             Soluciones{' '}
@@ -71,7 +71,7 @@ export default function Precios() {
               <div className="flex flex-col justify-between">
                 <div>
                   <p className="text-white/40 text-sm mb-3">Inversión inicial</p>
-                  <div className="font-nunito font-black leading-none mb-2" style={{ fontSize: 'clamp(52px, 7vw, 80px)' }}>
+                  <div className="font-display leading-none mb-2" style={{ fontSize: 'clamp(52px, 7vw, 80px)' }}>
                     <span className="text-white/25 text-3xl align-top mt-4 mr-1 inline-block font-bold">USD</span>
                     <span className="text-white">1.200</span>
                     <span className="text-white/25 text-4xl"> — 1.500</span>

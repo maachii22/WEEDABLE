@@ -49,7 +49,7 @@ export default function Problema() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-nunito font-black leading-[0.93] tracking-tight mb-8"
+          className="font-display leading-[0.9] tracking-tight mb-8"
           style={{ fontSize: 'clamp(52px, 7.5vw, 108px)' }}
         >
           <span className="block text-white">No más Excel.</span>
@@ -72,7 +72,7 @@ export default function Problema() {
           transition={{ duration: 0.6, delay: 0.22 }}
           className="text-white/45 text-lg max-w-lg leading-relaxed mb-20"
         >
-          Cada club que sigue operando así está perdiendo socios, información y plata — todos los días.
+          Dejá de perder socios, información y plata.
         </motion.p>
 
         {/* Pain cards */}
@@ -85,7 +85,8 @@ export default function Problema() {
               transition={{ duration: 0.6, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="
                 group relative p-8 rounded-2xl
-                bg-white/[0.035] border border-white/[0.07]
+                bg-[rgba(10,10,11,0.5)] border border-white/[0.07]
+                backdrop-blur-xl
                 hover:bg-white/[0.06] hover:border-[#00a701]/25
                 transition-all duration-300
               "
@@ -94,7 +95,7 @@ export default function Problema() {
               <div className="absolute top-0 left-6 right-6 h-px bg-[#00a701] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
 
               <div className="text-3xl mb-5">{pain.icon}</div>
-              <h3 className="font-nunito font-black text-xl text-white mb-3 leading-tight">
+              <h3 className="font-display text-xl text-white mb-3 leading-tight">
                 {pain.title}
               </h3>
               <p className="text-white/45 text-sm leading-relaxed">

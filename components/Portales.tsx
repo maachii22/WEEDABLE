@@ -4,6 +4,9 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
+// Set to '/portal-demo.mp4' or '/portal-demo.gif' when screen recording is ready (Loom/QuickTime)
+const VIDEO_DEMO_PATH = ''
+
 const portales = [
   {
     id: 'socio',
@@ -11,7 +14,7 @@ const portales = [
     nombre: 'Portal de Socios',
     desc: 'La experiencia digital completa para cada miembro. Stock del día, genéticas, puntos, tienda y perfil — todo con la identidad de tu club.',
     features: [
-      'Stock disponible en tiempo real',
+      'Stock de genéticas al minuto — ningún socio llega con cuota cero',
       'Reseñas de genéticas con rating',
       'Sistema de puntos acumulables',
       'Tienda para canjear puntos',
@@ -30,8 +33,8 @@ const portales = [
     features: [
       'Métricas 360° del club',
       'Alertas de stock y socios',
-      'Aprobación y gestión de usuarios',
-      'Control de stock y catálogo',
+      'Aprobación y gestión de socios',
+      'Control de stock y catálogo de genéticas',
       'Asistente IA integrado',
       'Configurador 360° del local',
       'Reportes y analytics',
@@ -64,7 +67,7 @@ export default function Portales() {
             <span className="w-6 h-px bg-[#00a701]" />
           </div>
           <h2
-            className="font-nunito font-black leading-[0.93] tracking-tight text-white"
+            className="font-display leading-[0.9] tracking-tight text-white"
             style={{ fontSize: 'clamp(48px, 7vw, 100px)' }}
           >
             Ingeniería Digital{' '}
@@ -82,37 +85,37 @@ export default function Portales() {
           transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col lg:flex-row gap-0 rounded-3xl overflow-hidden border border-white/[0.07] bg-white/[0.02]"
         >
-          {/* LEFT SIDEBAR — selector */}
-          <div className="lg:w-80 flex-shrink-0 border-b lg:border-b-0 lg:border-r border-white/[0.07]">
+          {/* SELECTOR — tabs on mobile, sidebar on desktop */}
+          <div className="flex flex-row lg:flex-col lg:w-80 flex-shrink-0 border-b border-white/[0.07]">
             {portales.map((portal, i) => (
               <button
                 key={portal.id}
                 onClick={() => setActive(i)}
                 className={`
-                  w-full text-left px-8 py-7 transition-all duration-300
+                  flex-1 lg:flex-none w-full text-center lg:text-left px-4 lg:px-8 py-5 lg:py-7 transition-all duration-300
                   relative group
-                  ${i === 0 ? '' : 'border-t border-white/[0.06]'}
+                  ${i === 0 ? '' : 'lg:border-t border-white/[0.06]'}
                   ${active === i
                     ? 'bg-white/[0.04]'
                     : 'hover:bg-white/[0.025]'
                   }
                 `}
               >
-                {/* Active left border — exactly like Vantra */}
+                {/* Active indicator — bottom on mobile, left on desktop */}
                 <div className={`
-                  absolute left-0 top-0 bottom-0 w-[3px] rounded-r-full
+                  absolute bottom-0 left-0 right-0 h-[3px] lg:bottom-auto lg:top-0 lg:right-auto lg:left-0 lg:w-[3px] lg:h-full rounded-t-full lg:rounded-r-full
                   transition-all duration-300
                   ${active === i ? 'bg-[#00a701]' : 'bg-transparent'}
                 `} />
 
                 <div className={`
-                  text-[10px] font-bold tracking-[2.5px] uppercase mb-2 transition-colors duration-200
+                  hidden lg:block text-[10px] font-bold tracking-[2.5px] uppercase mb-2 transition-colors duration-200
                   ${active === i ? 'text-[#00a701]' : 'text-white/30'}
                 `}>
                   {portal.categoria}
                 </div>
                 <div className={`
-                  font-nunito font-black text-xl leading-tight transition-colors duration-200
+                  font-nunito font-black text-sm lg:text-xl leading-tight transition-colors duration-200
                   ${active === i ? 'text-white' : 'text-white/50'}
                 `}>
                   {portal.nombre}
@@ -133,7 +136,7 @@ export default function Portales() {
                 className="flex flex-col h-full"
               >
                 {/* Title */}
-                <h3 className="font-nunito font-black text-4xl lg:text-5xl text-white mb-4 leading-tight">
+                <h3 className="font-display text-4xl lg:text-5xl text-white mb-4 leading-tight">
                   {current.nombre}
                 </h3>
                 <p className="text-white/50 text-base leading-relaxed mb-8 max-w-lg">
@@ -172,18 +175,30 @@ export default function Portales() {
                     <span className="w-3 h-3 rounded-full bg-green-500/70" />
                     <div className="flex-1 ml-3 bg-white/[0.05] rounded-md h-5 max-w-48" />
                   </div>
-                  {/* Screenshot with blur */}
+                  {/* Screenshot or video demo */}
                   <div className="relative overflow-hidden" style={{ maxHeight: '340px' }}>
-                    <Image
-                      src={current.mockup}
-                      alt={current.nombre}
-                      width={900}
-                      height={500}
-                      className="w-full object-cover object-top blur-[2px] md:blur-[3px] scale-[1.02]"
-                      priority
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQACEQADAP/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAQUA/9k="
-                    />
+                    {VIDEO_DEMO_PATH ? (
+                      <video
+                        src={VIDEO_DEMO_PATH}
+                        poster={current.mockup}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full object-cover object-top"
+                      />
+                    ) : (
+                      <Image
+                        src={current.mockup}
+                        alt={current.nombre}
+                        width={900}
+                        height={500}
+                        className="w-full object-cover object-top blur-[2px] md:blur-[3px] scale-[1.02]"
+                        priority
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQACEQADAP/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAQUA/9k="
+                      />
+                    )}
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]/80" />
                     {/* Center CTA over mockup — like Vantra */}

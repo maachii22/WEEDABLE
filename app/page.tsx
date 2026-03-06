@@ -6,6 +6,7 @@ import Portales from '@/components/Portales'
 import Clientes from '@/components/Clientes'
 import Precios from '@/components/Precios'
 import Proceso from '@/components/Proceso'
+import FAQ from '@/components/FAQ'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import Cursor from '@/components/Cursor'
@@ -23,6 +24,7 @@ export default function Home() {
         <Clientes />
         <Precios />
         <Proceso />
+        <FAQ />
         <CTA />
       </main>
       <Footer />

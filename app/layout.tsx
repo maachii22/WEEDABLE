@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import Background from '@/components/Background'
 import './globals.css'
 
 const title = 'Weedable — Software para Clubes Cannábicos'
@@ -36,7 +37,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="dot-grid">
+      <body>
+        <Background />
         {children}
         <Analytics />
       </body>

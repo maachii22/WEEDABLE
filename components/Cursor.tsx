@@ -5,33 +5,39 @@ import { useEffect, useRef } from 'react'
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
-  let rx = 0, ry = 0
+  const frameRef = useRef<number>(0)
+  const posRef = useRef({ mx: 0, my: 0, rx: 0, ry: 0 })
 
   useEffect(() => {
-    let mx = 0, my = 0
-
     const onMove = (e: MouseEvent) => {
-      mx = e.clientX
-      my = e.clientY
+      posRef.current.mx = e.clientX
+      posRef.current.my = e.clientY
       if (dotRef.current) {
-        dotRef.current.style.left = mx + 'px'
-        dotRef.current.style.top = my + 'px'
+        dotRef.current.style.left = e.clientX + 'px'
+        dotRef.current.style.top = e.clientY + 'px'
       }
     }
 
     const animate = () => {
+      const { mx, my } = posRef.current
+      let { rx, ry } = posRef.current
       rx += (mx - rx) * 0.12
       ry += (my - ry) * 0.12
+      posRef.current.rx = rx
+      posRef.current.ry = ry
       if (ringRef.current) {
         ringRef.current.style.left = rx + 'px'
         ringRef.current.style.top = ry + 'px'
       }
-      requestAnimationFrame(animate)
+      frameRef.current = requestAnimationFrame(animate)
     }
 
     document.addEventListener('mousemove', onMove)
-    animate()
-    return () => document.removeEventListener('mousemove', onMove)
+    frameRef.current = requestAnimationFrame(animate)
+    return () => {
+      document.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(frameRef.current)
+    }
   }, [])
 
   return (

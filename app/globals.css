@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&family=Righteous&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,7 +26,22 @@ body {
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
   cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Righteous para todos los font-display */
+.font-display {
+  font-family: 'Righteous', sans-serif;
+}
+
+/* Fallback: enlaces y nav visibles aunque Tailwind no cargue */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Nav styles manejados por Tailwind en Nav.tsx */
 
 /* Custom cursor */
 .cursor-dot {
@@ -80,8 +95,63 @@ body:has(button:hover) .cursor-ring {
 ::-webkit-scrollbar-track { background: #0a0a0a; }
 ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
 
-/* Dot grid background */
+/* Dot grid background (legacy — usado en hero fallback) */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Scan light: dot grid animado con máscara que barre */
+@keyframes scanLight {
+  0%   { mask-position: -150% 0%; -webkit-mask-position: -150% 0%; }
+  100% { mask-position: 250% 0%;  -webkit-mask-position: 250% 0%; }
+}
+
+/* Fill height (barras de progreso) */
+@keyframes fillHeight {
+  from { height: 0%; }
+  to   { height: 100%; }
+}
+
+/* Noise overlay global */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("https://assets.vercel.com/image/upload/v1695380311/front/noise.svg");
+  background-repeat: repeat;
+  opacity: 0.018;
+  mix-blend-mode: overlay;
+  will-change: opacity;
+}
+
+/* Dot grid base (capa 1 — estática) */
+.dot-grid-base {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(rgb(255,255,255) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.028;
+}
+
+/* Dot grid scan (capa 2 — barre de izquierda a derecha) */
+.dot-grid-scan {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(rgb(255,255,255) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.22;
+  mask-image: linear-gradient(105deg, transparent 35%, black 50%, transparent 65%);
+  -webkit-mask-image: linear-gradient(105deg, transparent 35%, black 50%, transparent 65%);
+  mask-size: 350% 350%;
+  -webkit-mask-size: 350% 350%;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  animation: scanLight 7s ease-in-out infinite;
+  will-change: mask-position;
 }
