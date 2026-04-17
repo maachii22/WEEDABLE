@@ -9,6 +9,9 @@ const url = 'https://weedable.com.ar'
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
+  verification: {
+    google: 'Am_YuGXyZphvAUnHVdbnMySIO0ZXldFXF8SVBdqS6l4',
+  },
   title,
   description,
   keywords: ['clubes cannábicos', 'software cannabis', 'portal de socios', 'gestión club', 'Argentina'],
