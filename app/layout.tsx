@@ -26,7 +26,11 @@ export const metadata: Metadata = {
     description,
   },
   icons: {
-    icon: '/isotipo.png',
+    icon: [
+      { url: '/isotipo.png', type: 'image/png' },
+    ],
+    shortcut: '/isotipo.png',
+    apple: '/isotipo.png',
   },
 }
 
